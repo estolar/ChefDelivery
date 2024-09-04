@@ -1,2 +1,10 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.custom-btn {
+  background-color: #28a745; /* Verde predeterminado de Bootstrap */
+  color: white;
+  font-size: 1.2rem; /* 20% más grande */
+  border-radius: 50px; /* Redondeado */
+  padding: 10px 20px; /* Ajuste de padding para más tamaño */
+}
