@@ -1,4 +1,6 @@
+# db/seeds.rb
 # Crear usuarios
+
 users = User.create!([
   { email: 'juan@example.com', password: 'password', first_name: 'Juan', last_name: 'Perez', address: 'Lima' },
   { email: 'maria@example.com', password: 'password', first_name: 'Maria', last_name: 'Gomez', address: 'Arequipa' },

@@ -1,1 +1,10 @@
-Hola show
+<h1>Service</h1>
+<h2><%= @service.name %></h2>
+<ul>
+  <li><%= @service.description %></li>
+  <li><%= @service.cost %></li>
+  <li><%= @service.category.category %></li>
+  <li><%= @service.user.first_name %></li>
+</ul>
+
+<%= link_to "return to list", services_path %>
