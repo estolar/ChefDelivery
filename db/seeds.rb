@@ -11,7 +11,11 @@ users = User.create!([
   { email: 'carlos@example.com', password: 'password', first_name: 'Carlos', last_name: 'Garcia', address: 'Cusco' },
   { email: 'ana@example.com', password: 'password', first_name: 'Ana', last_name: 'Lopez', address: 'Trujillo' },
   { email: 'luis@example.com', password: 'password', first_name: 'Luis', last_name: 'Martinez', address: 'Piura' },
-  { email: 'claudia@example.com', password: 'password', first_name: 'Claudia', last_name: 'Ramirez', address: 'Iquitos' }
+  { email: 'claudia@example.com', password: 'password', first_name: 'Claudia', last_name: 'Ramirez', address: 'Iquitos' },
+  { email: 'victorhuatucov@gmail.com', password: '123456', first_name: 'Victor', last_name: 'Huatuco', address: 'Lima' },
+  { email: 'pamelamc23@gmail.com', password: '123456', first_name: 'Pamea', last_name: 'Matias', address: 'Lima' },
+  { email: 'gslazar96@gmail.com', password: '123456', first_name: 'Gustavo', last_name: 'Salazar', address: 'Lima' },
+  { email: 'enrique7stolar@gmail.com', password: '123456', first_name: 'Enrique', last_name: 'Stolar', address: 'Lima' }
 ])
 
 puts "Usuarios creados: #{users.inspect}"
@@ -39,12 +43,12 @@ services = Service.create!([
 
 # Adjuntar varias imágenes
 images_service1 = [
-  { url: "https://i0.wp.com/www.brasasysabores.com/wp-content/uploads/2017/06/servicio-de-parrilla-argentina-para-comunio%CC%81n.jpg", filename: "nes1.png" },
-  { url: "https://i0.wp.com/www.brasasysabores.com/wp-content/uploads/2017/06/servicio-de-parrilla-argentina-para-comunio%CC%81n.jpg", filename: "nes2.png" }
+  { url: "https://tofuu.getjusto.com/orioneat-prod/4kkQK8cfvu3wrkJA2-Parrilla%20Especial.jpg", filename: "nes1.png" },
+  { url: "https://tofuu.getjusto.com/orioneat-prod/4kkQK8cfvu3wrkJA2-Parrilla%20Especial.jpg", filename: "nes2.png" }
 ]
 
 images_service1.each do |image|
-  file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+  file = URI.open("https://tofuu.getjusto.com/orioneat-prod/4kkQK8cfvu3wrkJA2-Parrilla%20Especial.jpg")
   services[0].photos.attach(io: file, filename: image[:filename], content_type: "image/png")
 end
 
@@ -54,7 +58,7 @@ images_service2 = [
 ]
 
 images_service2.each do |image|
-  file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+  file = URI.open("https://static.wixstatic.com/media/7b69fa_f75a4c6c168244aba72cc078ca50f129~mv2.jpg/v1/fill/w_520,h_312,al_c,lg_1,q_80,enc_auto/7b69fa_f75a4c6c168244aba72cc078ca50f129~mv2.jpg")
   services[1].photos.attach(io: file, filename: image[:filename], content_type: "image/png")
 end
 
@@ -64,7 +68,7 @@ images_service3 = [
 ]
 
 images_service3.each do |image|
-  file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+  file = URI.open("https://s7g10.scene7.com/is/image/barcelo/mejores%20pizzas%20italia")
   services[2].photos.attach(io: file, filename: image[:filename], content_type: "image/png")
 end
 
@@ -74,7 +78,7 @@ images_service4 = [
 ]
 
 images_service4.each do |image|
-  file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+  file = URI.open("https://www.cocinacaserayfacil.net/wp-content/uploads/2019/11/Comida-china.jpg")
   services[3].photos.attach(io: file, filename: image[:filename], content_type: "image/png")
 end
 
@@ -84,7 +88,7 @@ images_service5 = [
 ]
 
 images_service5.each do |image|
-  file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+  file = URI.open("https://encolombia.com/wp-content/uploads/2019/07/Comida-Mexicana-y-Tex-mex.jpg")
   services[4].photos.attach(io: file, filename: image[:filename], content_type: "image/png")
 end
 
