@@ -15,9 +15,11 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   # modificacion de rutas services
-  resources :services, only: [:index, :show, :new, :create]
+  resources :services, only: [:index, :show, :new, :create] do
+    resources :orders, only: [:new, :create]
+  end
 
-  resources :orders, only: [:new, :create, :show]
+  resources :orders, only: [:index, :show]
 
   get 'signup', to: 'users#new'
   resources :users, only: [:create]

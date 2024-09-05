@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
-
+    @orders = Order.all
   end
 
   def show
@@ -9,10 +9,12 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @service = Service.find(params[:service_id])
     @order = Order.new
   end
 
   def create
+    @service = Service.find(params[:service_id])
     @order = Order.new(order_params)
     if @order.save
       redirect_to orders_path
