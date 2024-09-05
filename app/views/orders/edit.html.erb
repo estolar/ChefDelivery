@@ -1,0 +1,16 @@
+<div class="container my-5">
+  <h1>Edit Order</h1>
+
+  <div> <%= @order.service.name %> </div>
+  <div> <%= @order.service.cost %> </div>
+  <div> <%= @order.service.description %> </div>
+
+  <%= simple_form_for (@order) do |f| %>
+    <%# <%= f.input :date, html5: true %> %>
+    <%# <%= f.input :num_persons, as: :integer, input_html: {min: 0, step: 1, placeholder: 0}, label:'Selecciona el número de adicionales'%> %>
+    <%# <%= f.hidden_field :status, value:@order.status %> %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+<%= link_to 'Cancelar edición', order_path(@order) %>

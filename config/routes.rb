@@ -15,16 +15,17 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   # modificacion de rutas services
-  resources :services, only: [:index, :show, :new, :create]
+  resources :services, only: [:index, :show, :new, :create] do
+    resources :orders, only: [:new, :create]
+  end
 
-  resources :orders, only: [:new, :create, :show] do
+  resources :orders, except: [:new, :create] do
     member do
       get 'new_offer', to: 'orders#new_offer'
       post 'create_offer', to: 'orders#create_offer'
     end
   end
 
-  
   get 'signup', to: 'users#new'
   resources :users, only: [:create]
 end

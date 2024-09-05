@@ -1,2 +1,36 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<%# Aqui va lo del formulario de seguro %>
+<%= link_to 'Retornar', service_path(@service) %>
+
+<div class="container my-5">
+  <h1>New Order</h1>
+
+  <div> <%= @service.name %> </div>
+  <div> <%= @service.cost %> </div>
+  <div> <%= @service.description %> </div>
+
+  <%= simple_form_for [@service, @order] do |f| %>
+    <%= f.hidden_field :service_id, value:@service.id %>
+    <%= f.hidden_field :user_id, value:@service.user_id %>
+    <%# <%= f.input :date, html5: true %> %>
+    <%# <%= f.input :num_persons, as: :integer, input_html: {min: 0, step: 1, placeholder: 0}, label:'Selecciona el número de adicionales'%> %>
+    <%# <%= f.hidden_field :status, value:@order.status %> %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+
+<div class = 'container'>
+  <h5>Resumen</h5>
+  <h6><strong>Servicio:</strong></h6>
+  <%= @service.name  %>
+  <h6><strong>Descripcion:</strong></h6>
+  <%= @service.cost %>
+  <h6><strong>Fecha:</strong></h6>
+  <%# <%= @service.date %> %>
+  <h6><strong>Cantidad de personas:</strong></h6>
+  <h6><strong>Informacion del precio:</strong></h6>
+  <p>Precio base:</p>
+  <p>Tarifa por personas adicionales:</p>
+  <p>Tarifa por servicio ChefDelivery:</p>
+  <h6><strong>Total:</strong></h6>
+</div>
