@@ -19,11 +19,14 @@
 </div>
 
 
-<div>
+<div class = 'container'>
   <h5>Resumen</h5>
-  <h6><strong>Comida:</strong></h6>
+  <h6><strong>Servicio:</strong></h6>
+  <%= @service.name  %>
   <h6><strong>Descripcion:</strong></h6>
+  <%= @service.cost %>
   <h6><strong>Fecha:</strong></h6>
+  <%# <%= @service.date %> %>
   <h6><strong>Cantidad de personas:</strong></h6>
   <h6><strong>Informacion del precio:</strong></h6>
   <p>Precio base:</p>
