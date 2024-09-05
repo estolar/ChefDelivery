@@ -1,0 +1,19 @@
+<div class = "container">
+<h1>Your orders</h1>
+
+<%= link_to "Search more services", services_path, class:"btn btn-primary"%>
+
+<% @orders.each do |order| %>
+  <div class="card my-2" style="width: 18rem;">
+    <div class="card-body">
+      <h2 class="card-title"><%= link_to order.service.name, order_path(order) %></h2>
+      <div class="card-text"><strong>Description</strong></div>
+        <p><%= order.service.description %></p>
+      <div class="card-text"><strong>Cost</strong></div>
+        <p><%= order.service.cost %></p>
+      <%# <div class="card-text"><strong>Status</strong></div>
+        <p><%= order.status %></p> %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,2 +1,37 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h1>Order</h1>
+<h1><%= @order.service.name %></h1>
+<ul>
+  <li><%= @order.service.description %></li>
+  <li><%= @order.service.cost %></li>
+  <li><%= @order.service.category.category %></li>
+  <li><%= @order.service.user.first_name %></li>
+</ul>
+
+
+
+<%= link_to "Retornar a la lista", orders_path %>
+<%= link_to "Editar", edit_order_path(@order) %>
+
+<%= link_to "Delete",
+  order_path(@order),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+
+
+<%# <%= link_to "delete", ruta_path(instancia), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}%> %>
+
+Tu servicio
+
+Resumen
+
+Comida:
+Descripcion:
+Fecha:
+Cantidad de personas:
+
+Informacion del precio:
+
+Precio base:
+Tarifa por personas adicionales:
+Tarifa por servicio ChefDelivery:
+Total:

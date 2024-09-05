@@ -4,10 +4,11 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :cost %>
-    <%= f.association :category, label_method: :category%>
-    <%= f.input :user_id, collection: User.all, label_method: :first_name, value_method: :id %>
+    <%= f.association :category, label_method: :category %>
+    <%= f.hidden_field :user_id, value:current_user.id %>
     <%= f.submit %>
   <% end %>
 </div>
 
+<% console %>
 <%# Falta agregar el boton para subir fotos (cloudinary) %>
