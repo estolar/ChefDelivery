@@ -1,6 +1,4 @@
-# db/seeds.rb
 # Crear usuarios
-
 users = User.create!([
   { email: 'juan@example.com', password: 'password', first_name: 'Juan', last_name: 'Perez', address: 'Lima' },
   { email: 'maria@example.com', password: 'password', first_name: 'Maria', last_name: 'Gomez', address: 'Arequipa' },
@@ -10,7 +8,6 @@ users = User.create!([
   { email: 'claudia@example.com', password: 'password', first_name: 'Claudia', last_name: 'Ramirez', address: 'Iquitos' }
 ])
 
-# Depuración: Imprime los usuarios para verificar que se hayan creado correctamente
 puts "Usuarios creados: #{users.inspect}"
 
 # Crear categorías
@@ -23,10 +20,9 @@ categories = Category.create!([
   { category: 'Comida Mexicana' }
 ])
 
-# Depuración: Imprime las categorías para verificar que se hayan creado correctamente
 puts "Categorías creadas: #{categories.inspect}"
 
-# Crear servicios y asegurar que se asignan usuarios y categorías correctamente
+# Crear servicios
 services = Service.create!([
   { name: 'Parrillada en Casa', description: 'Deliciosa parrillada a domicilio con carne de primera', cost: 150.00, category: Category.find_by(category: 'Parrilla'), user: users[0] },
   { name: 'Buffet Criollo', description: 'Comida criolla para eventos especiales', cost: 250.00, category: Category.find_by(category: 'Comida Peruana'), user: users[1] },
@@ -35,5 +31,15 @@ services = Service.create!([
   { name: 'Tacos Mexicanos', description: 'Auténticos tacos mexicanos con los mejores ingredientes', cost: 180.00, category: Category.find_by(category: 'Comida Mexicana'), user: users[3] }
 ])
 
-# Depuración: Imprime los servicios para verificar que se hayan creado correctamente
 puts "Servicios creados: #{services.inspect}"
+
+# Crear órdenes
+orders = Order.create!([
+  { service_id: services[0].id, user_id: users[4].id }, # Luis compra Parrillada en Casa
+  { service_id: services[1].id, user_id: users[5].id }, # Claudia compra Buffet Criollo
+  { service_id: services[2].id, user_id: users[3].id }, # Ana compra Pizza Italiana
+  { service_id: services[3].id, user_id: users[2].id }, # Carlos compra Comida China Gourmet
+  { service_id: services[4].id, user_id: users[1].id }  # Maria compra Tacos Mexicanos
+])
+
+puts "Órdenes creadas: #{orders.inspect}"
