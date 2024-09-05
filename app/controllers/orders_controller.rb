@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-
+    @order = Order.find(params[:id])
   end
 
   def new
@@ -24,21 +24,26 @@ class OrdersController < ApplicationController
   end
 
   def edit
-
+    @order = Order.find(params[:id])
+    # @service = Service.find(@order.service_id)
   end
 
   def update
-
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to order_path(@order)
   end
 
   def destroy
-
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_path, status: :see_other
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:service_id, :user_id)
+    params.require(:order).permit(:date, :num_persons)
   end
 
 end
