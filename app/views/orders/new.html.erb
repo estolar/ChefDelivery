@@ -1,4 +1,5 @@
 <%# Aqui va lo del formulario de seguro %>
+<%= link_to 'Retornar', service_path(@service) %>
 
 <div class="container my-5">
   <h1>New Order</h1>
@@ -17,20 +18,16 @@
   <% end %>
 </div>
 
-<%= link_to 'Retornar', service_path(@service) %>
 
-Tu servicio
-
-Resumen
-
-Comida:
-Descripcion:
-Fecha:
-Cantidad de personas:
-
-Informacion del precio:
-
-Precio base:
-Tarifa por personas adicionales:
-Tarifa por servicio ChefDelivery:
-Total:
+<div>
+  <h5>Resumen</h5>
+  <h6><strong>Comida:</strong></h6>
+  <h6><strong>Descripcion:</strong></h6>
+  <h6><strong>Fecha:</strong></h6>
+  <h6><strong>Cantidad de personas:</strong></h6>
+  <h6><strong>Informacion del precio:</strong></h6>
+  <p>Precio base:</p>
+  <p>Tarifa por personas adicionales:</p>
+  <p>Tarifa por servicio ChefDelivery:</p>
+  <h6><strong>Total:</strong></h6>
+</div>

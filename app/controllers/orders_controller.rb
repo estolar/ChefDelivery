@@ -43,7 +43,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:date, :num_persons)
+    params.require(:order).permit(:service_id, :user_id)
+    # params.require(:order).permit(:date, :num_persons)
   end
 
 end
