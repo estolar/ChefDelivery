@@ -6,6 +6,7 @@
     <%= f.input :cost %>
     <%= f.association :category, label_method: :category %>
     <%= f.hidden_field :user_id, value:current_user.id %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit %>
   <% end %>
 </div>
