@@ -1,0 +1,44 @@
+<%= stylesheet_link_tag 'pages/new_offer', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container mt-5 mb-5 text-center">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header text-white text-center">
+          <h2>Formulario de Garantía</h2>
+        </div>
+        <div class="card-body">
+
+          <h3 class="text-center mb-4">Contrato de Garantía y Aceptación de Pedido</h3>
+
+          <p><strong>Dueño del servicio:</strong> <%= @owner.first_name %> <%= @owner.last_name %></p>
+          <p><strong>Cliente:</strong> <%= @client.first_name %> <%= @client.last_name %></p>
+          <p><strong>Producto/Servicio:</strong> <%= @service.name %></p>
+          <p><strong>Fecha de Aceptación:</strong> <%= @order.created_at.strftime("%d/%m/%Y") %></p>
+
+          <h4>Cláusulas</h4>
+
+          <ol class="text-left">
+            <li><strong>Objeto del Contrato:</strong> Mediante la presente, el Dueño acepta formalmente el pedido realizado por el Vendedor</li>
+            <li><strong>Garantía de Calidad:</strong> El Vendedor garantiza que el Producto/Servicio será entregado conforme a los estándares de calidad acordados</li>
+            <li><strong>Política de Reembolso:</strong> En caso de que el Producto/Servicio no cumpla con los estándares</li>
+            <li><strong>Plazo de Entrega:</strong> El Vendedor se compromete a entregar el Producto/Servicio</li>
+            <li><strong>Obligaciones del Dueño:</strong> El Dueño se compromete a proporcionar al Vendedor todas las facilidades necesarias</li>
+            <li><strong>Ley Aplicable y Jurisdicción:</strong> Este contrato se rige por la Ley de Contratos de CheffDelivery</li>
+          </ol>
+
+          <hr>
+
+          <p class="lead">Elige si deseas aceptar o rechazar la orden.</p>
+
+          <%= simple_form_for @order, url: create_offer_order_path(@order), method: :post do |f| %>
+            <div class="form-group d-flex justify-content-center">
+              <%= f.button :submit, "Aceptar", name: "order[status]", value: "Acceptar", class: "btn btn-accept btn-lg mx-2" %>
+              <%= f.button :submit, "Rechazar", name: "order[status]", value: "Rechazar", class: "btn btn-reject btn-lg mx-2" %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
