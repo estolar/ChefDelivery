@@ -1,17 +1,21 @@
-<div class = "container">
-<h1>List of services</h1>
+ <h1>List of services</h1>
 
-<%= link_to "Add a service", new_service_path, class:"btn btn-primary"%>
-
-<% @services.each do |service| %>
-  <div class="card my-2" style="width: 18rem;">
-    <div class="card-body">
-      <h2 class="card-title"><%= link_to service.name, service_path(service) %></h2>
-      <div class="card-text"><strong>Description</strong></div>
-        <p><%= service.description %></p>
-      <div class="card-text"><strong>Category</strong></div>
-        <p><%= service.category.category %></p>
+  <div class="cards-container">
+    <% @services.each do |service| %>
+      <div class="card my-2">
+        <div class="card-image">
+          <img src="https://via.placeholder.com/300" alt="<%= service.name %>">
+        </div>
+        <div class="card-body">
+          <h2 class="card-title"><%= link_to service.name, service_path(service) %></h2>
+          <div class="card-text">
+            <strong>Descripción</strong>
+            <p><%= service.description %></p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <%= link_to "Añadir", new_service_path, class: "btn btn-primary" %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
