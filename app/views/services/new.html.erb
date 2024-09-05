@@ -4,9 +4,10 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :cost %>
-    <%= f.association :category, label_method: :category%>
-    <%= f.input :user_id, collection: User.all, label_method: :first_name, value_method: :id %>
-
+    <%= f.association :category, label_method: :category %>
+    <%= f.input :user_id, input_html: { value: current_user.first_name, readonly: true } %>
+    <%# <%= f.input :date, html5: true %> %>
+    <%# <%= f.input :num_persons, as: :integer, input_html: {min: 0, step: 1, placeholder: 0}, label:'Selecciona el número de adicionales'%> %>
     <%= f.submit %>
   <% end %>
 </div>
