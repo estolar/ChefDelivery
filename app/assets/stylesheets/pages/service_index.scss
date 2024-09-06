@@ -1,104 +1,104 @@
-// .super-container {
-//   background-size: cover; /* Cubre el contenedor */
-//   background-position: center center; /* Centra la imagen */
-//   background-repeat: no-repeat; /* Evita que la imagen se repita */
+// // .super-container {
+// //   background-size: cover; /* Cubre el contenedor */
+// //   background-position: center center; /* Centra la imagen */
+// //   background-repeat: no-repeat; /* Evita que la imagen se repita */
+// //   width: 100%;
+// //   min-height: 100vh; /* Asegura que cubra toda la ventana */
+// // }
+
+// .container {
 //   width: 100%;
-//   min-height: 100vh; /* Asegura que cubra toda la ventana */
+//   max-width: 1200px; /* Define un ancho máximo */
+//   margin: 0 auto;
+//   padding: 20px;
 // }
 
-.container {
-  width: 100%;
-  max-width: 1200px; /* Define un ancho máximo */
-  margin: 0 auto;
-  padding: 20px;
-}
+// .cards-container {
+//   display: flex;
+//   flex-wrap: wrap; /* Permite que las tarjetas se muevan a la siguiente línea si no hay suficiente espacio */
+//   gap: 20px; /* Añade un espacio entre las tarjetas */
+//   justify-content: center; /* Centra las tarjetas dentro del contenedor */
+//   padding: 10px; /* Añade espacio adicional alrededor del contenedor */
+//   max-width: 100%;
+// }
 
-.cards-container {
-  display: flex;
-  flex-wrap: wrap; /* Permite que las tarjetas se muevan a la siguiente línea si no hay suficiente espacio */
-  gap: 20px; /* Añade un espacio entre las tarjetas */
-  justify-content: center; /* Centra las tarjetas dentro del contenedor */
-  padding: 10px; /* Añade espacio adicional alrededor del contenedor */
-  max-width: 100%;
-}
+// .card {
+//   width: 100%; /* Reducimos el tamaño de la tarjeta al 80% de su tamaño actual */
+//   max-width: 240px; /* Para asegurar que no exceda cierto tamaño */
+//   background-color: rgba(255, 255, 255, 0.5); /* Fondo con transparencia */
+//   backdrop-filter: blur(10px); /* Efecto de desenfoque */
+//   border-radius: 10px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor de la tarjeta */
+//   overflow: hidden;
+//   margin: 15px; /* Margen ajustado para menos separación entre tarjetas */
+//   transition: all 0.3s ease;
+// }
 
-.card {
-  width: 100%; /* Reducimos el tamaño de la tarjeta al 80% de su tamaño actual */
-  max-width: 240px; /* Para asegurar que no exceda cierto tamaño */
-  background-color: rgba(255, 255, 255, 0.5); /* Fondo con transparencia */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor de la tarjeta */
-  overflow: hidden;
-  margin: 15px; /* Margen ajustado para menos separación entre tarjetas */
-  transition: all 0.3s ease;
-}
+// .card-services:hover {
+//   transform: scale(1.05); /* Añade un pequeño efecto al hacer hover */
+// }
 
-.card-services:hover {
-  transform: scale(1.05); /* Añade un pequeño efecto al hacer hover */
-}
+// .card-image img {
+//   width: 80%;
+//   height: 144px; /* Ajusta el tamaño aquí */
+//   object-fit: cover;
+//   margin: 0 auto; /* Centrar la imagen */
+// }
 
-.card-image img {
-  width: 80%;
-  height: 144px; /* Ajusta el tamaño aquí */
-  object-fit: cover;
-  margin: 0 auto; /* Centrar la imagen */
-}
+// .card-body {
+//   text-align: center;
+//   padding: 10px;
+// }
 
-.card-body {
-  text-align: center;
-  padding: 10px;
-}
+// .card-title {
+//   font-size: 1.3em; /* Tamaño del título */
+//   margin-bottom: 10px;
+//   font-weight: bold; /* Negrita para el título */
+//   a {
+//     text-decoration: none;
+//     color: #358111; /* Cambiamos el color del enlace al verde */
+//     &:hover {
+//       color: #24550a; /* Un verde más oscuro al hacer hover */
+//     }
+//   }
+// }
 
-.card-title {
-  font-size: 1.3em; /* Tamaño del título */
-  margin-bottom: 10px;
-  font-weight: bold; /* Negrita para el título */
-  a {
-    text-decoration: none;
-    color: #358111; /* Cambiamos el color del enlace al verde */
-    &:hover {
-      color: #24550a; /* Un verde más oscuro al hacer hover */
-    }
-  }
-}
+// .card-text {
+//   font-size: 1em;
+//   color: #666;
+//   margin-bottom: 20px;
+//   strong {
+//     display: block;
+//     margin-bottom: 5px;
+//     color: #358111; /* Cambiamos el color del texto fuerte al verde */
+//     font-weight: normal; /* Sin negrita para "Descripción" */
+//   }
+// }
 
-.card-text {
-  font-size: 1em;
-  color: #666;
-  margin-bottom: 20px;
-  strong {
-    display: block;
-    margin-bottom: 5px;
-    color: #358111; /* Cambiamos el color del texto fuerte al verde */
-    font-weight: normal; /* Sin negrita para "Descripción" */
-  }
-}
+// .card-footer {
+//   background-color: #f9f9f9;
+//   padding: 15px;
+//   text-align: center;
+// }
 
-.card-footer {
-  background-color: #f9f9f9;
-  padding: 15px;
-  text-align: center;
-}
+// .btn-primary {
+//   background-color: #089e21; /* Color del botón */
+//   color: rgb(245, 245, 245); /* Color del texto en el botón */
+//   padding: 10px 15px;
+//   border-radius: 5px;
+//   text-decoration: none;
+//   border: none;
+//   text-align: center;
+//   &:hover {
+//     background-color: #998722; /* Color más oscuro al hacer hover */
+//     color: white;
+//   }
+// }
 
-.btn-primary {
-  background-color: #089e21; /* Color del botón */
-  color: rgb(245, 245, 245); /* Color del texto en el botón */
-  padding: 10px 15px;
-  border-radius: 5px;
-  text-decoration: none;
-  border: none;
-  text-align: center;
-  &:hover {
-    background-color: #998722; /* Color más oscuro al hacer hover */
-    color: white;
-  }
-}
-
-h1 {
-  text-align: center;
-  font-size: 3em; /* Tamaño más grande para el título */
-  font-weight: bold; /* Negrita para el título */
-  color: #358111; /* Ajusta el color a tu preferencia */
-  margin-bottom: 40px; /* Más espacio debajo del título */
-}
+// h1 {
+//   text-align: center;
+//   font-size: 3em; /* Tamaño más grande para el título */
+//   font-weight: bold; /* Negrita para el título */
+//   color: #358111; /* Ajusta el color a tu preferencia */
+//   margin-bottom: 40px; /* Más espacio debajo del título */
+// }
