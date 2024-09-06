@@ -1,36 +1,69 @@
 <%# Aqui va lo del formulario de seguro %>
-<%= link_to 'Retornar', service_path(@service) %>
 
-<div class="container my-5">
+<div class="container mx-auto overflow-hidden align-middle">
+  <%= link_to 'Retornar', service_path(@service) %>
   <h1>New Order</h1>
+  <%# row justify-content-between %>
+  <div class="row gx-5 justify-content-between">
+    <div class = "col-7">
+      <h3> <%= @service.name %> </h3>
+      <h6> <%= @service.category.category %> </h6>
+      <div>
+      <img src="https://www.unileverfoodsolutions.com.mx/tendencias/tecnicas-culinarias/al-grill/parrilla-como-innovacion/jcr:content/parsys/set1/row2/span12/textimage_copy_1052527401/image.transform/jpeg-optimized/image.1592429871241.jpg" alt="parrilla" class = "w-100 rounded-5">
+      </div>
+      <h6>Description:</h6>
+      <p> <%= @service.description %> </p>
+    </div>
 
-  <div> <%= @service.name %> </div>
-  <div> <%= @service.cost %> </div>
-  <div> <%= @service.description %> </div>
-
-  <%= simple_form_for [@service, @order] do |f| %>
-    <%= f.hidden_field :service_id, value:@service.id %>
-    <%= f.hidden_field :user_id, value:@service.user_id %>
-    <%# <%= f.input :date, html5: true %> %>
-    <%# <%= f.input :num_persons, as: :integer, input_html: {min: 0, step: 1, placeholder: 0}, label:'Selecciona el número de adicionales'%> %>
-    <%# <%= f.hidden_field :status, value:@order.status %> %>
-    <%= f.submit %>
-  <% end %>
-</div>
-
-
-<div class = 'container'>
-  <h5>Resumen</h5>
-  <h6><strong>Servicio:</strong></h6>
-  <%= @service.name  %>
-  <h6><strong>Descripcion:</strong></h6>
-  <%= @service.cost %>
-  <h6><strong>Fecha:</strong></h6>
-  <%# <%= @service.date %> %>
-  <h6><strong>Cantidad de personas:</strong></h6>
-  <h6><strong>Informacion del precio:</strong></h6>
-  <p>Precio base:</p>
-  <p>Tarifa por personas adicionales:</p>
-  <p>Tarifa por servicio ChefDelivery:</p>
-  <h6><strong>Total:</strong></h6>
+    <div class = "col-4 border shadow-sm p-3 mb-5 bg-body-tertiary rounded-5 sticky-top align-content-center">
+      <h3 class = "border-bottom py-2">Resumen</h3>
+      <%= simple_form_for [@service, @order] do |f| %>
+        <%= f.hidden_field :service_id, value:@service.id %>
+        <%= f.hidden_field :user_id, value:@service.user_id %>
+        <%# <%= f.hidden_field :status, value:@order.status %> %>
+        <div>
+          <div class="d-flex justify-content-between align-items-center px-3 pb-4">
+            <div>Servicio:</div>
+            <div><%= @service.name %></div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center px-3 pb-4">
+            <div>Fecha:</div>
+            <%# <%= f.input :date, html5: true %> %>
+            <div><%# <%= @service.date %> %></div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center px-3 pb-4">
+            <div>Cantidad de personas:</div>
+            <%# <%= f.input :num_persons, as: :integer, input_html: {min: 0, step: 1, placeholder: 0}, label:'Selecciona el número de adicionales'%> %>
+            <div><%# <%= @service.num_persons %> %></div>
+          </div>
+          <div class = "d-flex justify-content-between align-items-center px-3 pb-4">
+          <div>Informacion del precio:</div>
+          </div>
+          <% cost_service = @service.cost.to_i %>
+          <% cost_per_additional = cost_service * 0.25 %>
+          <% num_persons = 2 %>
+          <% tarifa_app = 0.30 %>
+          <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
+            <div>Precio base:</div>
+            <div><%= cost_service %></div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
+            <div>Tarifa por personas adicionales:</div>
+            <div><%= cost_additionals = cost_per_additional * num_persons %></div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
+            <div>Tarifa por servicio ChefDelivery:</div>
+            <div><%= tarifa_total = cost_service * tarifa_app %></div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center px-3 pb-4">
+            <div><strong>Total:</strong></div>
+            <div><%= cost_service + cost_additionals + tarifa_total %></div>
+          </div>
+        </div>
+        <div class = "d-flex justify-content-center">
+        <%= f.submit "Confirm Order", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
