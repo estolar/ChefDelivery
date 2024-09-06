@@ -1,0 +1,75 @@
+/* Video de fondo que cubre toda la página */
+#background-video {
+  position: fixed; /* El video cubre toda la pantalla */
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1; /* Se coloca detrás del contenido */
+  object-fit: cover;
+  opacity: 0.8; /* Transparencia */
+}
+
+/* Contenedor principal del contenido */
+.content-wrapper {
+  position: relative;
+  z-index: 1; /* Asegura que el formulario esté por encima del video */
+}
+
+/* Estilos del formulario */
+.newcontainer {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+  padding: 20px;
+  max-width: 600px;
+  margin: 50px auto; /* Centra el formulario */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del título */
+h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #358111;
+}
+
+/* Estilos del formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacio entre los campos */
+}
+
+input[type="text"],
+select {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc; /* Bordes grises */
+  border-radius: 5px;
+  background-color: #e6e6e6; /* Fondo gris claro */
+  transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #006400; /* Cambia el color del borde a verde al hacer focus */
+}
+
+/* Estilos del botón */
+.btn-custom {
+  padding: 15px;
+  font-size: 1.2em;
+  color: white;
+  background-color: #358111; /* Botón verde */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #004d00; /* Verde más oscuro en hover */
+}
