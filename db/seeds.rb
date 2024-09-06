@@ -35,9 +35,9 @@ puts "Categorías creadas: #{categories.inspect}"
 # Crear servicios
 services = Service.create!([
   { name: 'Parrillada en Casa', description: 'Deliciosa parrillada a domicilio con carne de primera', cost: 150.00, category: Category.find_by(category: 'Parrilla'), user: users[0] },
-  { name: 'Buffet Criollo', description: 'Comida criolla para eventos especiales', cost: 250.00, category: Category.find_by(category: 'Comida Peruana'), user: users[1] },
+  { name: 'Buffet Criollo', description: 'Comida criolla para eventos especiales con familia o amigos', cost: 250.00, category: Category.find_by(category: 'Comida Peruana'), user: users[1] },
   { name: 'Pizza Italiana', description: 'Pizza hecha en horno de leña con ingredientes frescos', cost: 100.00, category: Category.find_by(category: 'Comida Italiana'), user: users[2] },
-  { name: 'Comida China Gourmet', description: 'Exquisitos platillos chinos para tus eventos', cost: 200.00, category: Category.find_by(category: 'Comida China'), user: users[0] },
+  { name: 'Comida China Gourmet', description: 'Exquisitos platillos chinos para tus eventos familiares', cost: 200.00, category: Category.find_by(category: 'Comida China'), user: users[0] },
   { name: 'Tacos Mexicanos', description: 'Auténticos tacos mexicanos con los mejores ingredientes', cost: 180.00, category: Category.find_by(category: 'Comida Mexicana'), user: users[3] }
 ])
 
@@ -94,13 +94,22 @@ end
 
 puts "Servicios creados: #{services.inspect}"
 
-# Crear órdenes
-orders = Order.create!([
-  { service_id: services[0].id, user_id: users[4].id }, # Luis compra Parrillada en Casa
-  { service_id: services[1].id, user_id: users[5].id }, # Claudia compra Buffet Criollo
-  { service_id: services[2].id, user_id: users[3].id }, # Ana compra Pizza Italiana
-  { service_id: services[3].id, user_id: users[2].id }, # Carlos compra Comida China Gourmet
-  { service_id: services[4].id, user_id: users[1].id }  # Maria compra Tacos Mexicanos
-])
+# Crear status
+status = Status.create([{ order_status: 'Pendiente de revisión' },
+  { order_status: 'Orden aceptada' },
+  { order_status: 'Orden rechazada' },
+  { order_status: 'Orden en proceso' },
+  { order_status: 'Orden cancelada' },
+  { order_status: 'Orden terminada' }])
 
+puts "Status creados: #{status.inspect}"
+
+# Crear las órdenes con sus respectivos status
+orders = Order.create!([
+{ service_id: services[0].id, user_id: users[4].id, status_id: status[0].id, num_people: 5, reservation: Date.today + 2.days }, # Luis compra Parrillada en Casa, orden creada
+{ service_id: services[1].id, user_id: users[5].id, status_id: status[1].id, num_people: 3, reservation: Date.today + 3.days }, # Claudia compra Buffet Criollo, orden aceptada
+{ service_id: services[2].id, user_id: users[3].id, status_id: status[2].id, num_people: 4, reservation: Date.today + 4.days }, # Ana compra Pizza Italiana, orden rechazada
+{ service_id: services[3].id, user_id: users[2].id, status_id: status[3].id, num_people: 2, reservation: Date.today + 1.week }, # Carlos compra Comida China Gourmet, orden en proceso
+{ service_id: services[4].id, user_id: users[1].id, status_id: status[4].id, num_people: 6, reservation: Date.today + 5.days }  # Maria compra Tacos Mexicanos, orden cancelada
+])
 puts "Órdenes creadas: #{orders.inspect}"
