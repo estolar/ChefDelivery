@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create]
   end
 
+  resources :services, only: [:edit, :update, :destroy]
   resources :orders, except: [:new, :create] do
     member do
       get 'new_offer', to: 'orders#new_offer'

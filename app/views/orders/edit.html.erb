@@ -1,16 +1,30 @@
 <div class="container my-5">
-  <h1>Edit Order</h1>
+  <h1 class="mb-4 text-center">Editar Orden</h1>
 
-  <div> <%= @order.service.name %> </div>
-  <div> <%= @order.service.cost %> </div>
-  <div> <%= @order.service.description %> </div>
+  <div class="card mb-4 shadow-sm p-4">
+    <h2 class="h4 text-muted">Detalles del Servicio</h2>
+    <p><strong>Nombre:</strong> <%= @order.service.name %></p>
+    <p><strong>Precio:</strong> S/ <%= @order.service.cost %></p>
+    <p><strong>Descripción:</strong> <%= @order.service.description %></p>
+  </div>
 
-  <%= simple_form_for (@order) do |f| %>
-    <%= f.input :reservation, html5: true %>
-    <%= f.input :num_people, as: :integer, input_html: {min: 0, step: 1, placeholder: 0}, label:'Número de adicionales' %>
-    <%= f.hidden_field :status, value:@order.status%>
-    <%= f.submit %>
-  <% end %>
+  <div class="card p-4 shadow-sm">
+    <h3 class="h5 mb-3">Actualizar Orden</h3>
+    <%= simple_form_for(@order, html: { class: 'form-horizontal' }) do |f| %>
+      <div class="form-group mb-3">
+        <%= f.input :reservation, html5: true, label: "Fecha de Reservación", wrapper_html: { class: 'mb-3' }, input_html: { class: 'form-control' } %>
+      </div>
+
+      <div class="form-group mb-3">
+        <%= f.input :num_people, as: :integer, input_html: {min: 0, step: 1, placeholder: 0, class: 'form-control'}, label: "Número de adicionales", wrapper_html: { class: 'mb-3' } %>
+      </div>
+
+      <%= f.hidden_field :status, value: @order.status %>
+
+      <div class="d-flex justify-content-between">
+        <%= link_to 'Cancelar edición', order_path(@order), class: 'btn btn-link text-decoration-none' %>
+        <%= f.submit 'Actualizar Orden', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to 'Cancelar edición', order_path(@order) %>
