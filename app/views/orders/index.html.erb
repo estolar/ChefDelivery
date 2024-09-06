@@ -39,6 +39,9 @@
 
                 <div class="d-flex justify-content-between align-items-center">
                   <span class="text-muted">S/ <%= order.service.cost %></span>
+                  <% if user_signed_in? %>
+                    <%= link_to "Revisar pedido", new_offer_order_path(order), class:"btn btn-sm btn-outline-secondary" %>
+                  <% end %>
                   <%= link_to "Ver más", order_path(order), class:"btn btn-sm btn-outline-secondary" %>
                 </div>
               </div>

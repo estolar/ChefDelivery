@@ -24,7 +24,9 @@
                 </div>
               </div>
               <div class="card-footer text-center">
-                <%= link_to "Editar", new_service_path, class: "btn btn-success" %>
+                <% if user_signed_in? %>
+                  <%= link_to "Editar", new_service_path, class: "btn btn-success" %>
+                <% end %>
               </div>
             </div>
           </div>
