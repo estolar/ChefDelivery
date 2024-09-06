@@ -1,10 +1,10 @@
-.super-container {
-  background-size: cover; /* Cubre el contenedor */
-  background-position: center center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  width: 100%;
-  min-height: 100vh; /* Asegura que cubra toda la ventana */
-}
+// .super-container {
+//   background-size: cover; /* Cubre el contenedor */
+//   background-position: center center; /* Centra la imagen */
+//   background-repeat: no-repeat; /* Evita que la imagen se repita */
+//   width: 100%;
+//   min-height: 100vh; /* Asegura que cubra toda la ventana */
+// }
 
 .container {
   width: 100%;
@@ -34,7 +34,7 @@
   transition: all 0.3s ease;
 }
 
-.card:hover {
+.card-services:hover {
   transform: scale(1.05); /* Añade un pequeño efecto al hacer hover */
 }
 
@@ -76,14 +76,14 @@
 }
 
 .card-footer {
-  background-color: #358111;
+  background-color: #f9f9f9;
   padding: 15px;
   text-align: center;
 }
 
 .btn-primary {
-  background-color: #eeeeee; /* Color del botón */
-  color: rgb(0, 0, 0); /* Color del texto en el botón */
+  background-color: #089e21; /* Color del botón */
+  color: rgb(245, 245, 245); /* Color del texto en el botón */
   padding: 10px 15px;
   border-radius: 5px;
   text-decoration: none;

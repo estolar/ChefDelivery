@@ -1,9 +1,9 @@
-<div class="super-container" style="background-image: url('<%= asset_path("comida.jpg") %>');">
+<div class="super-container" >
   <h1>Lista de servicios</h1>
 
   <div class="cards-container">
     <% @services.each do |service| %>
-      <div class="card my-2">
+      <div class="card card-services my-2">
         <div class="card-image">
           <% if service.photos.attached? %>
             <%# Usando Cloudinary para recortar la imagen automáticamente %>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="card-footer">
-          <%= link_to "Añadir", new_service_path, class: "btn btn-primary" %>
+          <%= link_to "Editar", new_service_path, class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>

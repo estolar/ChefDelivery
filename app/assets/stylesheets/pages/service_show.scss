@@ -1,4 +1,4 @@
-/* Fondo Neon */
+/* Eliminamos el fondo y el efecto neón */
 .neon-background {
   position: fixed;
   top: 0;
@@ -9,25 +9,17 @@
   justify-content: center;
   align-items: center;
   z-index: -1;
-  background: #222;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 7px,
-    rgba(0, 0, 0, 0.8) 9px,
-    rgba(0, 0, 0, 0.8) 13px,
-    transparent 13px
-  );
+  /* Todos los efectos de neón han sido eliminados */
 }
 
 .neon-background h1 {
   font-size: calc(20px + 18vh);
   line-height: calc(20px + 20vh);
-  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
-               0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-  color: #fff6a9;
+  /* Eliminamos el efecto de sombra y colores neón */
+  color: #000; /* Cambiamos el color del texto a negro o el que prefieras */
   font-family: "Sacramento", cursive;
-  animation: blink 5.5s infinite;
   text-align: center;
+  /* Animación parpadeo eliminada */
 }
 
 /* Efecto vidrio esmerilado en la tarjeta */
@@ -79,11 +71,11 @@
   margin: 0;
   font-size: 18px;
   line-height: 1.6;
-  color: white; /* Texto en color blanco */
+  color: rgb(0, 0, 0); /* Texto en color blanco */
 }
 
 .service-title {
-  color: white; /* Color blanco para el título */
+  color: rgb(0, 0, 0); /* Color blanco para el título */
   font-weight: bold; /* Negrita para el título */
 }
 
@@ -92,17 +84,4 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-}
-
-/* Animación parpadeo de las luces */
-@keyframes blink {
-  0%, 100% {
-    text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
-                 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-    color: #fff6a9;
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-    color: #111;
-  }
 }
