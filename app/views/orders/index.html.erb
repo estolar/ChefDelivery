@@ -1,19 +1,53 @@
-<div class = "container">
-<h1>Your orders</h1>
+<%= stylesheet_link_tag 'pages/index_order', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container">
+  <h1>Mi listado de ordenes</h1>
+  <%= link_to "Explorar más servicios", services_path, class:"btn btn-success"%>
 
-<%= link_to "Search more services", services_path, class:"btn btn-primary"%>
+  <main class="container mt-4" style="max-width: 1200px;">
+    <div class="row">
+      <% if @orders.any? %>
+        <% @orders.each do |order| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
 
-<% @orders.each do |order| %>
-  <div class="card my-2" style="width: 18rem;">
-    <div class="card-body">
-      <h2 class="card-title"><%= link_to order.service.name, order_path(order) %></h2>
-      <div class="card-text"><strong>Description</strong></div>
-        <p><%= order.service.description %></p>
-      <div class="card-text"><strong>Cost</strong></div>
-        <p><%= order.service.cost %></p>
-      <%# <div class="card-text"><strong>Status</strong></div>
-        <p><%= order.status %></p> %>
-      </div>
+              <%# Carrusel de imágenes %>
+              <div class="card-img-top">
+                <div id="carouselExample<%= order.id %>" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <% order.service.photos.each_with_index do |photo, index| %>
+                      <div class="carousel-item <%= 'active' if index == 0 %>">
+                        <%= cl_image_tag photo.key, crop: :fill, class: "d-block w-100" %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample<%= order.id %>" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample<%= order.id %>" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+              <%# Fin del carrusel %>
+
+              <div class="card-body">
+                <h5 class="card-title"><%= order.service.name %></h5>
+                <p class="card-text"><%= order.service.description %></p>
+                <p class="card-text"><strong><%= order.status.order_status %></strong></p>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="text-muted">S/ <%= order.service.cost %></span>
+                  <%= link_to "Ver más", order_path(order), class:"btn btn-sm btn-outline-secondary" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="text-center">No hay servicios disponibles en este momento.</p>
+      <% end %>
     </div>
-  <% end %>
+  </main>
 </div>
