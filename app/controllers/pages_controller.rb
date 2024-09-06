@@ -4,5 +4,6 @@ class PagesController < ApplicationController
 
   def home
     @services = Service.all
+    @categories = Category.all
   end
 end

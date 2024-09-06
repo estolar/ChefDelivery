@@ -32,8 +32,8 @@
 
           <%= simple_form_for @order, url: create_offer_order_path(@order), method: :post do |f| %>
             <div class="form-group d-flex justify-content-center">
-              <%= f.button :submit, "Aceptar", name: "order[status]", value: "Acceptar", class: "btn btn-accept btn-lg mx-2" %>
-              <%= f.button :submit, "Rechazar", name: "order[status]", value: "Rechazar", class: "btn btn-reject btn-lg mx-2" %>
+              <%= f.button :submit, "Aceptar", name: "order[status]", value: "Orden aceptada", class: "btn btn-accept btn-lg mx-2" %>
+              <%= f.button :submit, "Rechazar", name: "order[status]", value: "Orden rechazada", class: "btn btn-reject btn-lg mx-2" %>
             </div>
           <% end %>
 

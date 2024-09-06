@@ -1,1 +1,65 @@
 // Specific CSS for your home-page
+.card .fa-heart {
+  font-size: 1.3rem; /* Ajusta el tamaño del ícono */
+
+}
+
+.card .position-absolute {
+  z-index: 10; /* Asegura que el ícono esté por encima de otros elementos */
+  margin-bottom: 20px;
+}
+
+/* Corazón con borde naranja sin círculo */
+.heart-icon {
+  top: 20px;  /* Ajusta la posición vertical */
+  right: 25px; /* Ajusta la posición horizontal */
+  transform: translate(-10%, 20%); /* Mueve ligeramente el ícono */
+  font-size: 1.5rem; /* Ajusta el tamaño del corazón */
+  color: rgba(255, 255, 255, 0.3); /* Inicialmente el corazón es transparente */
+  -webkit-text-stroke: 2px rgb(255, 115, 0); /* Borde naranja */
+  transition: color 0.3s ease, -webkit-text-stroke-color 0.3s ease; /* Transición suave */
+}
+
+/* Cambia el color del ícono al pasar el mouse */
+.heart-icon:hover {
+  color: rgb(255, 115, 0); /* El corazón se llena de naranja al pasar el mouse */
+  -webkit-text-stroke-color: transparent; /* El borde desaparece al llenar el corazón */
+}
+
+
+.card-container {
+  margin-bottom: 20px; /* Ajusta el valor según tus necesidades */
+}
+
+
+/* Estilo personalizado para el botón "Ver más" */
+.btn-naranja {
+  color: rgb(255, 115, 0); /* Texto del botón en naranja */
+  border: 2px solid rgb(255, 115, 0); /* Borde naranja */
+  background-color: transparent; /* Fondo transparente */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+/* Cambia el color de fondo y el texto al pasar el mouse */
+.btn-naranja:hover {
+  background-color: rgb(255, 115, 0); /* Fondo naranja */
+  color: white; /* Texto en blanco */
+}
+
+/* Botones de las categorías */
+.filter-button {
+  background-color: #f8f9fa; /* Fondo por defecto */
+  border: 2px solid #cccccc; /* Borde por defecto */
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Transición suave */
+}
+
+.filter-button:hover {
+  background-color: rgb(255, 115, 0); /* Fondo naranja al pasar el mouse */
+  border-color: rgb(255, 115, 0); /* Cambiar el borde a naranja */
+  color: white; /* Color del texto al pasar el mouse */
+}
+
+.category-icon {
+  width: 80px; /* Ajusta el tamaño de los iconos según necesites */
+  height: 80px;
+}
