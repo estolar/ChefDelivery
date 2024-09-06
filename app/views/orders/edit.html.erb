@@ -6,9 +6,9 @@
   <div> <%= @order.service.description %> </div>
 
   <%= simple_form_for (@order) do |f| %>
-    <%# <%= f.input :date, html5: true %> %>
-    <%# <%= f.input :num_persons, as: :integer, input_html: {min: 0, step: 1, placeholder: 0}, label:'Selecciona el número de adicionales'%> %>
-    <%# <%= f.hidden_field :status, value:@order.status %> %>
+    <%= f.input :reservation, html5: true %>
+    <%= f.input :num_people, as: :integer, input_html: {min: 0, step: 1, placeholder: 0}, label:'Número de adicionales' %>
+    <%= f.hidden_field :status, value:@order.status%>
     <%= f.submit %>
   <% end %>
 </div>
