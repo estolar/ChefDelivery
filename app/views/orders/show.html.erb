@@ -1,37 +1,107 @@
-<h1>Order</h1>
-<h1><%= @order.service.name %></h1>
-<ul>
-  <li><%= @order.service.description %></li>
-  <li><%= @order.service.cost %></li>
-  <li><%= @order.service.category.category %></li>
-  <li><%= @order.service.user.first_name %></li>
-</ul>
+<%= stylesheet_link_tag 'pages/show', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+<div class = "container">
+  <div class= 'py-2'><%= link_to orders_path, class: "text-success" do %>
+    <i class="fa-solid fa-circle-arrow-left fs-5"></i>
+  <% end %></div>
 
+  <h1>Detalles de pedido</h1>
 
-<%= link_to "Retornar a la lista", orders_path %>
-<%= link_to "Editar", edit_order_path(@order) %>
+  <div class="container px-4 text-center">
+    <div class="row gx-5 d-flex justify-content-around">
+      <div class="col-4">
+        <div class = "card p-3">
+        <div class = "d-flex justify-content-between border-bottom border-4 pb-2">
+          <h4 class="m-0">Número de pedido:</h4>
+          <h4 class="m-0"><%= @order.id %></h4>
+        </div>
 
-<%= link_to "Delete",
-  order_path(@order),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+        <div class = "d-flex justify-content-between py-2">
+          Solicitud creada en
+          <div><%= @order.created_at %></div>
+        </div>
 
+        <div class = "d-flex justify-content-between pb-3">
+          Estado
+          <div><%= @order.status.order_status %></div>
+        </div>
 
-<%# <%= link_to "delete", ruta_path(instancia), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}%> %>
+        <div class = "d-flex justify-content-between pb-3">
+          Servicio
+          <div><%= @order.service.name  %></div>
+        </div>
 
-Tu servicio
+        <div class = "d-flex justify-content-between pb-3">
+          Ofrecido por
+          <div><%= "#{@order.service.user.first_name} #{@order.service.user.last_name}" %></div>
+        </div>
 
-Resumen
+        <div class = "d-flex justify-content-between pb-3">
+          Servicio para
+          <div><%= "#{@order.num_people} personas"  %></div>
+        </div>
 
-Comida:
-Descripcion:
-Fecha:
-Cantidad de personas:
+        <div class = "d-flex justify-content-between pb-3">
+          Fecha a reservar
+          <div><%= @order.reservation  %></div>
+        </div>
+      <%# carrusel %>
+        <div class = "contenedor-carrusel">
+          <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <% @order.service.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item <%= 'active' if index == 0 %>">
+                  <%= cl_image_tag photo.key, crop: :fill, class: "d-block w-100" %>
+                </div>
+              <% end %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      <%# fin carrusel %>
+        </div>
+      </div>
+      <div class="col-4">
+            <div class = "d-flex justify-content-between align-items-center px-3 pb-4">
+            <div>Informacion del precio:</div>
+            </div>
+            <% cost_service = @order.service.cost.to_i %>
+            <% cost_per_additional = cost_service * 0.25 %>
+            <%# stimulus para el numero de personas %>
+            <% num_people = 2 %>
+            <% tarifa_app = 0.30 %>
+            <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
+              <div>Precio base:</div>
+              <div><%= cost_service %></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
+              <div>Tarifa por personas adicionales:</div>
+              <div><%= cost_additionals = cost_per_additional * num_people %></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
+              <div>Tarifa por servicio ChefDelivery:</div>
+              <div><%= tarifa_total = cost_service * tarifa_app %></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center px-3 pb-4">
+              <div><strong>Total:</strong></div>
+              <div><%= cost_service + cost_additionals + tarifa_total %></div>
+            </div>
+        <%= link_to "Editar", edit_order_path(@order), class: "boton-verde" %>
 
-Informacion del precio:
+        <%= link_to "Delete",
+          order_path(@order), class: "boton-naranja",
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+        %>
+      </div>
+    </div>
+  </div>
+</div>
 
-Precio base:
-Tarifa por personas adicionales:
-Tarifa por servicio ChefDelivery:
-Total:
+</div>

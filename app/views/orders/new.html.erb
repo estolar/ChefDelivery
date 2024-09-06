@@ -1,69 +1,157 @@
 <%# Aqui va lo del formulario de seguro %>
+<%= stylesheet_link_tag 'pages/new_order', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container mx-auto align-middle">
+    <div class= 'py-2'><%= link_to service_path(@service), class: "text-success" do %>
+      <i class="fa-solid fa-circle-arrow-left fs-5"></i>
+    <% end %></div>
 
-<div class="container mx-auto overflow-hidden align-middle">
-  <%= link_to 'Retornar', service_path(@service) %>
-  <h1>New Order</h1>
-  <%# row justify-content-between %>
+    <h6 class = "my-2 mx-0">Nueva orden</h6>
+    <h1 class = "mx-0 my-2 py-1 px-3 border-start border-5 border-warning"><%=@service.name %></h1>
   <div class="row gx-5 justify-content-between">
-    <div class = "col-7">
-      <h3> <%= @service.name %> </h3>
-      <h6> <%= @service.category.category %> </h6>
-      <div>
-      <img src="https://www.unileverfoodsolutions.com.mx/tendencias/tecnicas-culinarias/al-grill/parrilla-como-innovacion/jcr:content/parsys/set1/row2/span12/textimage_copy_1052527401/image.transform/jpeg-optimized/image.1592429871241.jpg" alt="parrilla" class = "w-100 rounded-5">
-      </div>
-      <h6>Description:</h6>
-      <p> <%= @service.description %> </p>
-    </div>
+    <div class = "col">
+      <h6 class="badge bg-success"> <%= @service.category.category %> </h6>
+      <h6 class="badge bg-warning"> Destacado </h6>
+      <h6 class="badge bg-success">
+      <i class="fa-solid fa-people-group"></i>
+      6 a más
+      </h6>
 
-    <div class = "col-4 border shadow-sm p-3 mb-5 bg-body-tertiary rounded-5 sticky-top align-content-center">
-      <h3 class = "border-bottom py-2">Resumen</h3>
-      <%= simple_form_for [@service, @order] do |f| %>
-        <%= f.hidden_field :service_id, value:@service.id %>
-        <%= f.hidden_field :user_id, value:@service.user_id %>
-        <%# <%= f.hidden_field :status, value:@order.status %> %>
-        <div>
-          <div class="d-flex justify-content-between align-items-center px-3 pb-4">
-            <div>Servicio:</div>
-            <div><%= @service.name %></div>
+    <%# carrusel %>
+      <div class = "py-2">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% @service.photos.each_with_index do |photo, index| %>
+              <div class="carousel-item <%= 'active' if index == 0 %>">
+                <%= cl_image_tag photo.key, crop: :fill, class: "d-block w-100" %>
+              </div>
+            <% end %>
           </div>
-          <div class="d-flex justify-content-between align-items-center px-3 pb-4">
-            <div>Fecha:</div>
-            <%# <%= f.input :date, html5: true %> %>
-            <div><%# <%= @service.date %> %></div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    <%# fin carrusel %>
+
+
+      <%# Acordeon con descripcion y demas detalles %>
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header header-orange-drop-down">
+            <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+              Descripción
+            </a>
           </div>
-          <div class="d-flex justify-content-between align-items-center px-3 pb-4">
-            <div>Cantidad de personas:</div>
-            <%# <%= f.input :num_persons, as: :integer, input_html: {min: 0, step: 1, placeholder: 0}, label:'Selecciona el número de adicionales'%> %>
-            <div><%# <%= @service.num_persons %> %></div>
-          </div>
-          <div class = "d-flex justify-content-between align-items-center px-3 pb-4">
-          <div>Informacion del precio:</div>
-          </div>
-          <% cost_service = @service.cost.to_i %>
-          <% cost_per_additional = cost_service * 0.25 %>
-          <% num_persons = 2 %>
-          <% tarifa_app = 0.30 %>
-          <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
-            <div>Precio base:</div>
-            <div><%= cost_service %></div>
-          </div>
-          <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
-            <div>Tarifa por personas adicionales:</div>
-            <div><%= cost_additionals = cost_per_additional * num_persons %></div>
-          </div>
-          <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
-            <div>Tarifa por servicio ChefDelivery:</div>
-            <div><%= tarifa_total = cost_service * tarifa_app %></div>
-          </div>
-          <div class="d-flex justify-content-between align-items-center px-3 pb-4">
-            <div><strong>Total:</strong></div>
-            <div><%= cost_service + cost_additionals + tarifa_total %></div>
+          <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+            <div class="card-body body-white-drop-down px-4">
+              <%= @service.description %>
+            </div>
           </div>
         </div>
-        <div class = "d-flex justify-content-center">
-        <%= f.submit "Confirm Order", class: "btn btn-success" %>
+
+        <div class="card">
+          <div class="card-header header-orange-drop-down">
+            <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
+              Servicios adicionales
+            </a>
+          </div>
+          <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+            <div class="card-body body-white-drop-down px-4">
+              <ul>
+                <li>Menaje en general (cubiertos, platos, vasos, etc.)</li>
+                <li>Ronda de bocaditos previos , atencion personalizada de un mozo</li>
+                <li>Copas coctel con tragos preparados (pisco sour , algarrobina,etc)</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      <% end %>
+
+        <div class="card">
+          <div class="card-header header-orange-drop-down">
+            <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
+              Preguntas frecuentes
+            </a>
+          </div>
+          <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+            <div class="card-body body-white-drop-down px-4">
+              <>¿Existe un pedido máximo?</p>
+              <p>No! Puedes seleccionar la cantidad de comensales que consideres oportuno</p>
+              <p>¿Cocinas en el mismo lugar del banquete o traen la comida preparada?</p>
+              <p>Preparamos todo en el momento del evento para una mejor experiencia. Sin embargo, de solicitarlo, podemos llevar todo preparado, listo para servir</p>
+              <p>¿Dispones de local propio donde celebrar el banquete?</p>
+              <p>No por el momento. </p>
+              <p>¿Qué incluye el menú?</p>
+              <p>El menú es personalizado con opción de lunch y recena</p>
+              <p>¿Es posible adaptar o modificar los menús?</p>
+              <p>Si</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+<%# informacion del vendedor %>
+      <div class="notification my-3">
+        <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+        <div class="notification-content">
+          <p><small> <%= "#{@service.user.first_name} #{@service.user.last_name}" %></small></p>
+          <p>Gerente en Cocinando Sueños Catering. Más de 20 años de experiencia</p>
+          </div>
+      </div>
+
+    </div>
+    <div class="col bar">
+      <div><h3 class = "border-bottom py-2 px-3">Resumen</h3></div>
+        <%= simple_form_for [@service, @order] do |f| %>
+          <%= f.hidden_field :service_id, value:@service.id %>
+          <%= f.hidden_field :user_id, value:@service.user_id %>
+          <%= f.hidden_field :status_id, value:Status.find(1) %>
+          <div>
+            <div class="d-flex justify-content-between align-items-center px-3 pb-4">
+              <div>Servicio:</div>
+              <div><%= @service.name %></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center px-3 pb-4">
+              <div>Fecha:</div>
+              <div><%= f.input :reservation, html5: true, label: false%></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center px-3 pb-4">
+              <div>Cantidad de personas adicionales:</div>
+              <div><%= f.input :num_people, label: false, as: :integer, input_html: {min: 0, step: 1, placeholder: 0}%></div>
+            </div>
+            <div class = "d-flex justify-content-between align-items-center px-3 pb-4">
+            <div>Informacion del precio:</div>
+            </div>
+            <% cost_service = @service.cost.to_i %>
+            <% cost_per_additional = cost_service * 0.25 %>
+            <% num_people = 2 %>
+            <% tarifa_app = 0.30 %>
+            <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
+              <div>Precio base:</div>
+              <div><%= cost_service %></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
+              <div>Tarifa por personas adicionales:</div>
+              <div><%= cost_additionals = cost_per_additional * num_people %></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center ps-5 px-3 pb-4">
+              <div>Tarifa por servicio ChefDelivery:</div>
+              <div><%= tarifa_total = cost_service * tarifa_app %></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center px-3 pb-4">
+              <div><strong>Total:</strong></div>
+              <div><%= cost_service + cost_additionals + tarifa_total %></div>
+            </div>
+          </div>
+          <div class = "d-flex justify-content-center">
+          <%= f.submit "Realizar reserva", class: "boton-verde" %>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>

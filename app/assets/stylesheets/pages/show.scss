@@ -1,0 +1,38 @@
+// .contenedor-carrusel{
+//   max-width: 500px;
+// }
+
+.boton-verde{
+  text-decoration: none;
+  background-color: #28a745;
+  color: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px rgb(183, 183, 183);
+  border: 1px solid #28a745;
+
+  &:hover{
+    background-color: #1edd88;
+    text-decoration: none;
+    color: white;
+  }
+
+}
+
+.boton-naranja{
+  text-decoration: none;
+  background-color: #e67e22;
+  color: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px rgb(183, 183, 183);
+  border: 1px solid  #e67e22;
+
+  &:hover{
+    background-color: #feb47b;
+    text-decoration: none;
+    color: white;
+  }
+
+
+}
