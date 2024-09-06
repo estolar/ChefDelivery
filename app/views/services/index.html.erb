@@ -1,11 +1,15 @@
 <div class="super-container" style="background-image: url('<%= asset_path("comida.jpg") %>');">
- <h1 >Lista de servicios</h1>
+  <h1>Lista de servicios</h1>
 
-  <div class="cards-container" >
+  <div class="cards-container">
     <% @services.each do |service| %>
       <div class="card my-2">
         <div class="card-image">
-          <img src="https://via.placeholder.com/300" alt="<%= service.name %>">
+          <% if service.photos.attached? %>
+            <%= image_tag service.photos.first, alt: service.name, style: "width: 100%; height: 200px; object-fit: cover;" %>
+          <% else %>
+            <img src="https://via.placeholder.com/300" alt="<%= service.name %>" />
+          <% end %>
         </div>
         <div class="card-body">
           <h2 class="card-title"><%= link_to service.name, service_path(service) %></h2>

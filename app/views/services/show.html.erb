@@ -1,15 +1,36 @@
-<h1>Service</h1>
-<h2><%= @service.name %></h2>
-<ul>
-  <li><%= @service.description %></li>
-  <li><%= @service.cost %></li>
-  <li><%= @service.category.category %></li>
-  <li><%= @service.user.first_name %></li>
-</ul>
+<div class="neon-background">
+  <h1>ChefDelivery</h1>
+</div>
 
-<% @service.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<!-- Contenedor para centrar el contenido sin afectar el navbar -->
+<div class="content-container">
+  <div class="card service-details">
+    <!-- Primera fila: Información, imágenes y botones -->
+    <div class="service-info">
+      <h2 class="service-title"><%= @service.name %></h2>
+      <div class="service-description">
+        <p><%= @service.description %></p>
+        <p><%= @service.cost %> USD</p>
+        <p><%= @service.category.category %></p>
+        <p>Owner: <%= @service.user.first_name %></p>
+      </div>
 
-<%= link_to "Retornar a la lista", services_path %>
-<%= link_to "Hacer una reserva", new_service_order_path(@service) %>
+      <!-- Las fotos del servicio se muestran aquí -->
+      <div class="service-images">
+        <% if @service.photos.attached? %>
+          <% @service.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "service-photo" %>
+          <% end %>
+        <% else %>
+          <p>No images available for this service.</p>
+        <% end %>
+      </div>
+
+      <!-- Botones justo debajo de las imágenes -->
+      <div class="service-actions">
+        <%= link_to "Retornar a la lista", services_path, class: "btn btn-primary" %>
+        <%= link_to "Hacer una reserva", new_service_order_path(@service), class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+/* Fondo Neon */
+.neon-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  background: #222;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 7px,
+    rgba(0, 0, 0, 0.8) 9px,
+    rgba(0, 0, 0, 0.8) 13px,
+    transparent 13px
+  );
+}
+
+.neon-background h1 {
+  font-size: calc(20px + 18vh);
+  line-height: calc(20px + 20vh);
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
+               0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+  color: #fff6a9;
+  font-family: "Sacramento", cursive;
+  animation: blink 5.5s infinite;
+  text-align: center;
+}
+
+/* Efecto vidrio esmerilado en la tarjeta */
+.card {
+  background-color: rgba(255, 255, 255, 0.15); /* Fondo semitransparente */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
+  margin: -50px auto 0 auto; /* Mover la tarjeta ligeramente hacia arriba */
+  backdrop-filter: blur(10px); /* Desenfoque de fondo */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Borde semitransparente */
+  overflow: hidden; /* Previene desbordamientos dentro de la tarjeta */
+}
+
+/* Ajustar el contenedor principal para centrar correctamente la tarjeta */
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ocupa todo el alto de la ventana */
+  padding-bottom: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+/* Ajustar la altura de las imágenes para evitar desbordamientos */
+.service-images img {
+  height: auto;
+  max-height: 300px;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Estilos adicionales de los textos y botones */
+.service-details {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.service-info {
+  margin-bottom: 20px;
+}
+
+.service-description p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: white; /* Texto en color blanco */
+}
+
+.service-title {
+  color: white; /* Color blanco para el título */
+  font-weight: bold; /* Negrita para el título */
+}
+
+.service-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Animación parpadeo de las luces */
+@keyframes blink {
+  0%, 100% {
+    text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
+                 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    color: #111;
+  }
+}
