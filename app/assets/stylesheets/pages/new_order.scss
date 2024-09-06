@@ -9,9 +9,8 @@
   position: sticky;
   top: 20px;
   display: flex;
-  flex-direction: column; /* Alinea los elementos hijos en una columna */
-  // align-items: center; /* Centra los elementos horizontalmente */
-  justify-content: center; /* Centra los elementos verticalmente */
+  flex-direction: column;
+  justify-content: center;
 }
 
 

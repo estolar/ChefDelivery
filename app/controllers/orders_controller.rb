@@ -61,7 +61,6 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:service_id, :user_id, :reservation, :num_people, :status_id)
-    # params.require(:order).permit()
   end
 
 end

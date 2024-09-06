@@ -95,12 +95,12 @@ end
 puts "Servicios creados: #{services.inspect}"
 
 # Crear status
-status = Status.create([{ order_status: 'orden creada' },
-  { order_status: 'orden aceptada' },
-  { order_status: 'orden rechazada' },
-  { order_status: 'orden en proceso' },
-  { order_status: 'orden cancelada' },
-  { order_status: 'orden terminada' }])
+status = Status.create([{ order_status: 'Pendiente de revisión' },
+  { order_status: 'Orden aceptada' },
+  { order_status: 'Orden rechazada' },
+  { order_status: 'Orden en proceso' },
+  { order_status: 'Orden cancelada' },
+  { order_status: 'Orden terminada' }])
 
 puts "Status creados: #{status.inspect}"
 
