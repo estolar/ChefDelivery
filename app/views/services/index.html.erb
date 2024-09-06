@@ -20,7 +20,9 @@
           </div>
         </div>
         <div class="card-footer">
-          <%= link_to "Editar", new_service_path, class: "btn btn-primary" %>
+          <% if user_signed_in? %>
+            <%= link_to "Editar", new_service_path, class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     <% end %>
