@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def index
     @orders = Order.all
   end
@@ -62,5 +61,4 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:service_id, :user_id, :reservation, :num_people, :status_id)
   end
-
 end
