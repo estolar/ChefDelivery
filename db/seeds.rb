@@ -15,7 +15,7 @@ users = User.create!([
   { email: 'victorhuatucov@gmail.com', password: '123456', first_name: 'Victor', last_name: 'Huatuco', address: 'Lima' },
   { email: 'pamelamc23@gmail.com', password: '123456', first_name: 'Pamea', last_name: 'Matias', address: 'Lima' },
   { email: 'gslazar96@gmail.com', password: '123456', first_name: 'Gustavo', last_name: 'Salazar', address: 'Lima' },
-  { email: 'enrique7stolar@gmail.com', password: '123456', first_name: 'Enrique', last_name: 'Stolar', address: 'Lima' }
+  { email: 'enrique7stolar@gmail.com', password: '123456', first_name: 'Enrique', last_name: 'Stolar', address: 'Lima' }
 ])
 
 puts "Usuarios creados: #{users.inspect}"
