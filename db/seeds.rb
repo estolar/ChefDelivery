@@ -15,7 +15,7 @@ users = User.create!([
   { email: 'victorhuatucov@gmail.com', password: '123456', first_name: 'Victor', last_name: 'Huatuco', address: 'Lima' },
   { email: 'pamelamc23@gmail.com', password: '123456', first_name: 'Pamea', last_name: 'Matias', address: 'Lima' },
   { email: 'gslazar96@gmail.com', password: '123456', first_name: 'Gustavo', last_name: 'Salazar', address: 'Lima' },
-  { email: 'enrique7stolar@gmail.com', password: '123456', first_name: 'Enrique', last_name: 'Stolar', address: 'Lima' }
+  { email: 'enrique7stolar@gmail.com', password: '123456', first_name: 'Enrique', last_name: 'Stolar', address: 'Lima' }
 ])
 
 puts "Usuarios creados: #{users.inspect}"
@@ -35,9 +35,9 @@ puts "Categorías creadas: #{categories.inspect}"
 # Crear servicios
 services = Service.create!([
   { name: 'Parrillada en Casa', description: 'Deliciosa parrillada a domicilio con carne de primera', cost: 150.00, category: Category.find_by(category: 'Parrilla'), user: users[0] },
-  { name: 'Buffet Criollo', description: 'Comida criolla para eventos especiales', cost: 250.00, category: Category.find_by(category: 'Comida Peruana'), user: users[1] },
+  { name: 'Buffet Criollo', description: 'Comida criolla para eventos especiales con familia o amigos', cost: 250.00, category: Category.find_by(category: 'Comida Peruana'), user: users[1] },
   { name: 'Pizza Italiana', description: 'Pizza hecha en horno de leña con ingredientes frescos', cost: 100.00, category: Category.find_by(category: 'Comida Italiana'), user: users[2] },
-  { name: 'Comida China Gourmet', description: 'Exquisitos platillos chinos para tus eventos', cost: 200.00, category: Category.find_by(category: 'Comida China'), user: users[0] },
+  { name: 'Comida China Gourmet', description: 'Exquisitos platillos chinos para tus eventos familiares', cost: 200.00, category: Category.find_by(category: 'Comida China'), user: users[0] },
   { name: 'Tacos Mexicanos', description: 'Auténticos tacos mexicanos con los mejores ingredientes', cost: 180.00, category: Category.find_by(category: 'Comida Mexicana'), user: users[3] }
 ])
 
