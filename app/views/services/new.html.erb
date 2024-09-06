@@ -8,12 +8,11 @@
       <%= f.input :cost %>
       <%= f.association :category, label_method: :category %>
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit 'Create Service', class: 'btn-custom' %>
+      <%= f.submit 'Create service', class: 'btn-custom' %>
     <% end %>
   </div>
 </div>
 
-<!-- Video de fondo -->
 <video autoplay muted loop id="background-video">
   <source src="<%= asset_path('cooker.mp4') %>" type="video/mp4">
   Tu navegador no soporta la reproducción de video.
