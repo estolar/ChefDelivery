@@ -10,9 +10,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "pages/service_index";
-@import "pages/service_new";
-@import "pages/service_show";
 
+@import "pages/service-style/service_index.scss";
+@import "pages/service-style/service_new.scss";
+@import "pages/service-style/service_show.scss";
 // app/assets/stylesheets/application.scss
 // @import "bootstrap/scss/bootstrap";

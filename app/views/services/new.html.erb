@@ -1,20 +1,22 @@
-<div class="content-wrapper">
-  <!-- Formulario de servicio -->
-  <div class="newcontainer my-5">
-    <h1>Nuevo servicio</h1>
-    <%= simple_form_for(@service) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :description %>
-      <%= f.input :cost %>
-      <%= f.association :category, label_method: :category %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.submit 'Create service', class: 'btn-custom' %>
-    <% end %>
+<div class="service-new-page">
+  <div class="content-wrapper">
+    <!-- Formulario de servicio -->
+    <div class="newcontainer my-5">
+      <h1>Nuevo servicio</h1>
+      <%= simple_form_for(@service) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :cost %>
+        <%= f.association :category, label_method: :category %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.submit 'Create service', class: 'btn-custom' %>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<video autoplay muted loop id="background-video">
-  <source src="<%= asset_path('cooker.mp4') %>" type="video/mp4">
-  Tu navegador no soporta la reproducción de video.
-</video>
+  <video autoplay muted loop id="background-video">
+    <source src="<%= asset_path('cooker.mp4') %>" type="video/mp4">
+    Tu navegador no soporta la reproducción de video.
+  </video>
+</div>

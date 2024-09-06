@@ -1,34 +1,35 @@
-<div class="neon-background">
-  <h1></h1>
-</div>
+<div class="service-show-page">
+  <div class="neon-background">
+    <h1></h1>
+  </div>
 
-<div class="content-container">
-  <div class="card service-details">
-    <!-- Primera fila: Información, imágenes y botones -->
-    <div class="service-info">
-      <h2 class="service-title"><%= @service.name %></h2>
-      <div class="service-description">
-        <p><%= @service.description %></p>
-        <p><%= @service.cost %> USD</p>
-        <p><%= @service.category.category %></p>
-        <p>Usuario: <%= @service.user.first_name %></p>
-      </div>
+  <div class="content-container">
+    <div class="card service-details">
+      <!-- Primera fila: Información, imágenes y botones -->
+      <div class="service-info">
+        <h2 class="service-title"><%= @service.name %></h2>
+        <div class="service-description">
+          <p><%= @service.description %></p>
+          <p><%= @service.cost %> USD</p>
+          <p><%= @service.category.category %></p>
+          <p>Usuario: <%= @service.user.first_name %></p>
+        </div>
 
-      <div class="service-images">
-        <% if @service.photos.attached? %>
-          <% @service.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "service-photo" %>
+        <div class="service-images">
+          <% if @service.photos.attached? %>
+            <% @service.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "service-photo" %>
+            <% end %>
+          <% else %>
+            <p>No images available for this service.</p>
           <% end %>
-        <% else %>
-          <p>No images available for this service.</p>
-        <% end %>
-      </div>
+        </div>
 
-      <div class="service-actions">
-        <%= link_to "Retornar a la lista", services_path, class: "btn btn-primary" %>
-        <%= link_to "Hacer una reserva", new_service_order_path(@service), class: "btn btn-secondary" %>
+        <div class="service-actions">
+          <%= link_to "Retornar a la lista", services_path, class: "btn btn-success" %>
+          <%= link_to "Hacer una reserva", new_service_order_path(@service), class: "btn btn-secondary" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-#Comentario
