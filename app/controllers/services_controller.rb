@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :show
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @services = Service.all
   end
@@ -19,6 +19,22 @@ class ServicesController < ApplicationController
 
   def show
     @service = Service.find(params[:id])
+  end
+
+  def edit
+    @service = Service.find(params[:id])
+  end
+
+  def update
+    @service = Service.find(params[:id])
+    @service.update(service_params)
+    redirect_to service_path(@service)
+  end
+
+  def destroy
+    @service = Service.find(params[:id])
+    @service.destroy
+    redirect_to services_path, status: :see_other
   end
 
   private
