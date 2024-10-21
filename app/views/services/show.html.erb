@@ -1,34 +1,38 @@
 <div class="service-show-page">
-  <div class="neon-background">
-    <h1></h1>
+  <div class="neon-background" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; z-index: -1;">
+    <h1 style="font-size: calc(20px + 18vh); line-height: calc(20px + 20vh); color: #000; font-family: 'Sacramento', cursive; text-align: center;"></h1>
   </div>
 
-  <div class="content-container">
-    <div class="card service-details">
+  <div class="content-container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-lg p-4" style="background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); max-width: 900px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.3);">
       <!-- Primera fila: Información, imágenes y botones -->
-      <div class="service-info">
-        <h2 class="service-title"><%= @service.name %></h2>
-        <div class="service-description">
+      <div class="service-info text-center mb-4">
+        <h2 class="service-title font-weight-bold text-dark"><%= @service.name %></h2>
+        <div class="service-description text-muted">
           <p><%= @service.description %></p>
           <p><%= @service.cost %> USD</p>
           <p><%= @service.category.category %></p>
           <p>Usuario: <%= @service.user.first_name %></p>
         </div>
+      </div>
 
-        <div class="service-images">
-          <% if @service.photos.attached? %>
+      <div class="service-images mb-4">
+        <% if @service.photos.attached? %>
+          <div class="row">
             <% @service.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "service-photo" %>
+              <div class="col-md-6 mb-3">
+                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "img-fluid" %>
+              </div>
             <% end %>
-          <% else %>
-            <p>No images available for this service.</p>
-          <% end %>
-        </div>
+          </div>
+        <% else %>
+          <p class="text-muted">No images available for this service.</p>
+        <% end %>
+      </div>
 
-        <div class="service-actions">
-          <%= link_to "Retornar a la lista", services_path, class: "btn btn-success" %>
-          <%= link_to "Hacer una reserva", new_service_order_path(@service), class: "btn btn-secondary" %>
-        </div>
+      <div class="service-actions d-flex justify-content-center gap-2">
+        <%= link_to "Retornar a la lista", services_path, class: "btn btn-success" %>
+        <%= link_to "Hacer una reserva", new_service_order_path(@service), class: "btn btn-secondary" %>
       </div>
     </div>
   </div>
